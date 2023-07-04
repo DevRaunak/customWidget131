@@ -119,15 +119,7 @@ class _HomePageState extends State<HomePage> with ValidatorMixin{
               ),
               TextFormField(
                   keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value == "") {
-                      return "Please fill the Age Field!!";
-                    } else if (int.parse(value!.toString()) < 16) {
-                      return "Your Age must be above 16 yrs to proceed!!";
-                    }
-
-                    return null;
-                  },
+                  validator: ageValidate,
                   decoration: UIBase.getCustomDecoration(
                     hint: "Enter Age here..",
                     labelText: "Age",

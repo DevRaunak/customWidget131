@@ -18,4 +18,14 @@ mixin ValidatorMixin{
 
     return null;
   }
+
+  String? ageValidate(value) {
+    if (value == "") {
+      return "Please fill the Age Field!!";
+    } else if (int.parse(value!.toString()) < 16) {
+      return "Your Age must be above 16 yrs to proceed!!";
+    }
+
+    return null;
+  }
 }
