@@ -45,6 +45,8 @@ class _HomePageState extends State<HomePage> with ValidatorMixin{
 
   bool isPasswordVisible = false;
 
+  var email = "";
+
   var formKey = GlobalKey<FormState>();
 
   @override
@@ -90,6 +92,10 @@ class _HomePageState extends State<HomePage> with ValidatorMixin{
               TextFormField(
                   validator: emailValidate,
                   controller: emailController,
+                  onSaved: (value){
+                    email = value!;
+
+                  },
                   onChanged: (value) {},
                   decoration: UIBase.getCustomDecoration(
                       hint: "Enter Email here..",
@@ -128,6 +134,7 @@ class _HomePageState extends State<HomePage> with ValidatorMixin{
                   onPressed: () {
                     if (formKey.currentState != null) {
                       if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
                         print('Loggin-in');
                         Navigator.push(
                             context,
